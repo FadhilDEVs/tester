@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111e">
+  <title>AstroForge: Orbit Tycoon</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game-canvas" width="1280" height="720" aria-label="AstroForge game area"></canvas>
+
+    <header id="corporate-dashboard" class="hud-panel">
+      <div class="station-title">
+        <span class="eyebrow">ORBITAL CORPORATION</span>
+        <strong id="station-name">ASTROFORGE-01</strong>
+      </div>
+      <div class="resource-line"><span>CREDITS</span><strong id="credits-display">0</strong></div>
+      <div class="resource-line"><span>DARK MATTER</span><strong id="dark-matter-display">0</strong></div>
+      <div class="resource-line power"><span>POWER</span><strong id="power-display">0 / 0 kW</strong></div>
+      <div class="resource-line"><span>ALLOY</span><strong id="alloy-display">0</strong></div>
+      <div class="resource-line"><span>RP</span><strong id="rp-display">0</strong></div>
+    </header>
+
+    <section id="time-crew-dashboard" class="hud-panel">
+      <div id="galactic-time-display">GALACTIC TIME 00:00</div>
+      <div id="tier-display">TIER 1 — DEBRIS AGE</div>
+      <div id="crew-display">CREW 0 / 0</div>
+      <div id="rating-display">RATING ★☆☆☆☆</div>
+      <div id="speed-controls">
+        <button data-speed="0">PAUSE</button>
+        <button data-speed="1" class="active">1X</button>
+        <button data-speed="2">2X</button>
+      </div>
+    </section>
+
+    <aside id="build-panel" class="hud-panel">
+      <div class="panel-heading">
+        <span>BUILD MODULES</span>
+        <button id="rotate-button" title="Putar orientasi tampilan 90 derajat">ROTATE 90°</button>
+      </div>
+      <div id="build-list"></div>
+      <p id="build-hint">Pilih modul, lalu klik tile grid. Modul harus tersambung ke Corridor atau Docking Bay.</p>
+    </aside>
+
+    <aside id="crew-panel" class="hud-panel">
+      <div class="panel-heading"><span>CREW ROSTER</span></div>
+      <div id="crew-list"></div>
+      <p class="small-note">Klik modul, kemudian klik kartu kru untuk menugaskan atau melepas tugas.</p>
+    </aside>
+
+    <aside id="event-feed" aria-live="polite"></aside>
+
+    <nav id="command-bar" aria-label="Command bar">
+      <button class="command active" data-command="build">BUILD</button>
+      <button class="command disabled" data-command="fleet" title="Belum diimplementasikan pada build awal">FLEET</button>
+      <button class="command disabled" data-command="market" title="Belum diimplementasikan pada build awal">MARKET</button>
+      <button class="command disabled" data-command="research" title="Tech Tree berjalan otomatis">RESEARCH</button>
+      <button class="command" data-command="settings">SETTINGS</button>
+    </nav>
+
+    <section id="status-bar" class="hud-panel">
+      <span id="selected-module-display">Selected: None</span>
+      <span id="placement-status">Ready</span>
+    </section>
+
+    <div id="help-overlay" class="overlay hidden">
+      <section class="modal">
+        <button class="modal-close" data-close-overlay="help-overlay">×</button>
+        <h1>AstroForge: Orbit Tycoon</h1>
+        <p>Bangun stasiun orbit dari Docking Bay dan Corridor yang telah tersedia. Produksi Alloy melalui Debris Recycler, bangun Quantum Lab, lalu tempatkan Xeno-Glitch untuk menghasilkan Research Points.</p>
+        <ul>
+          <li>Solar Panel Array menghasilkan daya.</li>
+          <li>Algae Farm meningkatkan kapasitas kru.</li>
+          <li>Basic Crew Quarter memberi 10 kapasitas kasur.</li>
+          <li>Kronos-Titan menghasilkan Alloy +20% dan memakai 2 kasur.</li>
+          <li>Xeno-Glitch menghasilkan RP +25%, tetapi memakai +2 kW saat bekerja.</li>
+          <li>Solar Flare dan Space Pirates dapat muncul secara acak.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div id="game-over-overlay" class="overlay hidden">
+      <section class="modal">
+        <h1>CRITICAL CREW STRESS</h1>
+        <p>Seorang kru mencapai stres maksimum. Simulasi dihentikan.</p>
+        <button id="restart-button">RESTART SIMULATION</button>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
